@@ -16,19 +16,28 @@ POST {{BASE_URL}}/users/register
 Content-Type: application/json
 
 {
-    "name" : "ipek",
-    "surname" : "orken",
-    "email" : "orken@mail.com",
+    "name" : "user1",
+    "surname" : "hash",
+    "email" : "pswhash@mail.com",
+    "password" : "3453453456"
+}
+###
+
+POST {{BASE_URL}}/users/login
+Content-Type: application/json
+
+{
+    "email" : "ipek@mail.com",
     "password" : "1995"
 }
 
 
 ###
-PATCH  {{BASE_URL}}/users/620b993a54cc7515272a76d3
+PATCH  {{BASE_URL}}/users/620c9914dd61004db861f84a
 Content-Type: application/json
 
 {
-    "email":"orken_ipek@mail.com"
+    "password":"22"
 }
 
 ###

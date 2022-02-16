@@ -1,22 +1,24 @@
-const User = require("../models/userModel");
-const router = require("express").Router();
-var createError = require("http-errors");
+const User = require('../models/userModel');
+const router = require('express').Router();
+var createError = require('http-errors');
+const bcrypt = require('bcrypt');
 
 // sadece '/' koyduğumuzda burası 'api/users' anlamına gelir.
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   const data = await User.find({});
   res.json({ data });
 });
 
-router.get("/:id", (req, res, next) => {
+router.get('/:id', (req, res, next) => {
   res.json({
-    message: "idsi " + req.params.id + " olan user listelenecek.",
+    message: 'idsi ' + req.params.id + ' olan user listelenecek.',
   });
 });
 
-router.post("/register", async (req, res, next) => {
+router.post('/register', async (req, res, next) => {
   try {
     const newUser = new User(req.body);
+    newUser.password = await bcrypt.hash(newUser.password, 10);
     const { error, value } = newUser.joiValidation(req.body);
     if (error) {
       next(createError(400, error));
@@ -29,11 +31,23 @@ router.post("/register", async (req, res, next) => {
   }
 });
 
-router.patch("/:id", async (req, res, next) => {
+router.post('/login', async (req, res, next) => {
+  try {
+    const user = await User.beLogin(req.body.email, req.body.password);
+    res.json(user);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.patch('/:id', async (req, res, next) => {
   delete req.body.createAt;
   delete req.body.updatedAt;
-  delete req.body.password;
   // bunları herhangi biri kod üzerinden değiştiremesin diye yazdık.
+
+  if (req.body.hasOwnProperty('password')) {
+    req.body.password = await bcrypt.hash(req.body.password, 10);
+  }
 
   //post işlemindeki gibi user nesnesi oluşturmuyoruz. Bu yüzden statik metodlardan yararlanıyoruz.
   const { error, value } = User.joiValidationForUpdate(req.body);
@@ -41,16 +55,15 @@ router.patch("/:id", async (req, res, next) => {
     next(createError(400, error));
   } else {
     try {
-      const result = await User.findByIdAndUpdate(
-        { _id: req.params.id },
-        req.body,
-        { new: true, runValidators: true }
-      );
+      const result = await User.findByIdAndUpdate({ _id: req.params.id }, req.body, {
+        new: true,
+        runValidators: true,
+      });
       if (result) {
         return res.json(result);
       } else {
         return res.status(404).json({
-          message: "User güncellenemedi / bulunamadı.",
+          message: 'User güncellenemedi / bulunamadı.',
         });
       }
     } catch (e) {
@@ -59,18 +72,18 @@ router.patch("/:id", async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
   try {
     const result = await User.findByIdAndDelete({
       _id: req.params.id,
     });
     if (result) {
       res.json({
-        message: "User silindi.",
+        message: 'User silindi.',
       });
     } else {
       res.json({
-        message: "User silinemedi / bulunamadı.",
+        message: 'User silinemedi / bulunamadı.',
       });
     }
     //Eğer else içindeki hatayı da errorMiddleware ile getirmek istersek yazmamız gereken:
