@@ -1,0 +1,37 @@
+@BASE_URL = http://localhost:3000/api
+
+###
+
+GET  http://localhost:3000
+
+###
+
+GET {{BASE_URL}}/users
+
+###
+GET {{BASE_URL}}/users/3
+
+###
+POST {{BASE_URL}}/users/register
+Content-Type: application/json
+
+{
+    "name" : "ipek",
+    "surname" : "orken",
+    "email" : "orken@mail.com",
+    "password" : "1995"
+}
+
+
+###
+PATCH  {{BASE_URL}}/users/620b993a54cc7515272a76d3
+Content-Type: application/json
+
+{
+    "email":"orken_ipek@mail.com"
+}
+
+###
+DELETE {{BASE_URL}}/users/620b4e76f8ff4a021b72d3fa
+Content-Type: application/json
+
