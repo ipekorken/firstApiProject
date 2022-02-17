@@ -7,6 +7,7 @@ const Schema = mongoose.Schema;
 const Joi = require('@hapi/joi');
 var createError = require('http-errors');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const UserSchema = new Schema(
   {
@@ -34,6 +35,7 @@ const UserSchema = new Schema(
       type: String,
       required: true,
       trim: true,
+      minlength: 6,
     },
   },
   { collection: 'Users', timestamps: true }
@@ -42,8 +44,22 @@ const schema = Joi.object({
   name: Joi.string().min(3).max(50).trim(),
   surname: Joi.string().min(2).max(50).trim(),
   email: Joi.string().trim().email(),
-  password: Joi.string().trim(),
+  password: Joi.string().trim().min(6),
 });
+
+//token için:
+UserSchema.methods.generateToken = async function () {
+  const loggedUser = this;
+  //this, login routerındaki userı temsil ediyor.
+  const token = jwt.sign(
+    { _id: loggedUser._id, email: loggedUser.email, isAdmin: true, isActive: true },
+    'secretkey',
+    {
+      expiresIn: '1h',
+    }
+  );
+  return token;
+};
 
 //yeni bir user için:
 UserSchema.methods.joiValidation = function (userObject) {
@@ -64,6 +80,10 @@ UserSchema.methods.toJSON = function () {
 };
 
 UserSchema.statics.beLogin = async (email, password) => {
+  const { error, value } = schema.validate({ email, password });
+  if (error) {
+    throw createError(400, error);
+  }
   const user = await User.findOne({ email });
   if (!user) {
     throw createError(400, 'Email ya da şifre hatalı!');
@@ -79,11 +99,11 @@ UserSchema.statics.beLogin = async (email, password) => {
 };
 
 //update için:
+//static cünkü biz bu metodu sınıf üzerinden çağırıyoruz, nesne üzerinden değil.
 UserSchema.statics.joiValidationForUpdate = function (userObject) {
   return schema.validate(userObject);
   //required kullanamayız çünkü her zaman name, surname, email ve passwordü birlikte güncellemeyebiliriz. Sadece name güncellemeye çalıştığımızda diğerlerinde required yazarsa hata alırız.
 };
-//static cünkü biz bu metodu sınıf üzerinden çağırıyoruz, nesne üzerinden değil.
 
 const User = mongoose.model('User', UserSchema);
 module.exports = User;

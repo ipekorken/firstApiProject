@@ -2,6 +2,7 @@ const User = require('../models/userModel');
 const router = require('express').Router();
 var createError = require('http-errors');
 const bcrypt = require('bcrypt');
+const authMiddleware = require('../middleware/authMiddleware');
 
 // sadece '/' koyduğumuzda burası 'api/users' anlamına gelir.
 router.get('/', async (req, res) => {
@@ -9,11 +10,7 @@ router.get('/', async (req, res) => {
   res.json({ data });
 });
 
-router.get('/:id', (req, res, next) => {
-  res.json({
-    message: 'idsi ' + req.params.id + ' olan user listelenecek.',
-  });
-});
+router.get('/me', authMiddleware, (req, res, next) => {});
 
 router.post('/register', async (req, res, next) => {
   try {
@@ -34,7 +31,8 @@ router.post('/register', async (req, res, next) => {
 router.post('/login', async (req, res, next) => {
   try {
     const user = await User.beLogin(req.body.email, req.body.password);
-    res.json(user);
+    const token = await user.generateToken();
+    res.json({ user, token });
   } catch (error) {
     next(error);
   }

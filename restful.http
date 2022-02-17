@@ -9,17 +9,17 @@ GET  http://localhost:3000
 GET {{BASE_URL}}/users
 
 ###
-GET {{BASE_URL}}/users/3
+GET {{BASE_URL}}/users/me
 
 ###
 POST {{BASE_URL}}/users/register
 Content-Type: application/json
 
 {
-    "name" : "user1",
-    "surname" : "hash",
-    "email" : "pswhash@mail.com",
-    "password" : "3453453456"
+    "name" : "ugur",
+    "surname" : "orken",
+    "email" : "ugur@mail.com",
+    "password" : "ugurPsw"
 }
 ###
 
@@ -27,8 +27,8 @@ POST {{BASE_URL}}/users/login
 Content-Type: application/json
 
 {
-    "email" : "ipek@mail.com",
-    "password" : "1995"
+    "email" : "ugur@mail.com",
+    "password" : "ugurPsw"
 }
 
 
