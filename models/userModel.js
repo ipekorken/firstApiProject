@@ -51,13 +51,9 @@ const schema = Joi.object({
 UserSchema.methods.generateToken = async function () {
   const loggedUser = this;
   //this, login routerındaki userı temsil ediyor.
-  const token = jwt.sign(
-    { _id: loggedUser._id, email: loggedUser.email, isAdmin: true, isActive: true },
-    'secretkey',
-    {
-      expiresIn: '1h',
-    }
-  );
+  const token = jwt.sign({ _id: loggedUser._id, email: loggedUser.email }, 'secretkey', {
+    expiresIn: '1h',
+  });
   return token;
 };
 
