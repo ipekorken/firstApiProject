@@ -33,11 +33,22 @@ Content-Type: application/json
 
 
 ###
+
 PATCH  {{BASE_URL}}/users/620c9914dd61004db861f84a
 Content-Type: application/json
 
 {
     "password":"22"
+}
+###
+
+PATCH  {{BASE_URL}}/users/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBlMWZmMjBmMjZlMmZmZTAyZDAxMTQiLCJlbWFpbCI6InVndXJAbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpc0FjdGl2ZSI6dHJ1ZSwiaWF0IjoxNjQ1MTcyMzI4LCJleHAiOjE2NDUxNzU5Mjh9.aJgqLGpC286BtwvVkgIXvC3SUPh16jEREUUF4IFCw7Y
+
+{
+    "email" : "ipekNew@mail.com",
+    "password" : "ipekNewPsw"
 }
 
 ###

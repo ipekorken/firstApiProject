@@ -10,7 +10,37 @@ router.get('/', async (req, res) => {
   res.json({ data });
 });
 
-router.get('/me', authMiddleware, (req, res, next) => {});
+//router.get('/me', authMiddleware, (req, res, next) => {
+//  res.json(req.user);
+//});
+
+router.patch('/update', authMiddleware, async (req, res, next) => {
+  delete req.body.createAt;
+  delete req.body.updatedAt;
+  if (req.body.hasOwnProperty('password')) {
+    req.body.password = await bcrypt.hash(req.body.password, 10);
+  }
+  const { error, value } = User.joiValidationForUpdate(req.body);
+  if (error) {
+    next(createError(400, error));
+  } else {
+    try {
+      const result = await User.findByIdAndUpdate({ _id: req.user.id }, req.body, {
+        new: true,
+        runValidators: true,
+      });
+      if (result) {
+        return res.json(result);
+      } else {
+        return res.status(404).json({
+          message: 'User güncellenemedi.',
+        });
+      }
+    } catch (e) {
+      next(e);
+    }
+  }
+});
 
 router.post('/register', async (req, res, next) => {
   try {
