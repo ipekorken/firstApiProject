@@ -8,22 +8,22 @@ GET  http://localhost:3000
 
 GET {{BASE_URL}}/users
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBmOTdkYzE2M2ZlYWE5MmMzMzIyNmYiLCJlbWFpbCI6InVndXIyQG1haWwuY29tIiwiaWF0IjoxNjQ1NDI0MzA1LCJleHAiOjE2NDU0Mjc5MDV9.k_-f6fL3jYqjvDXW-GPw8f-t7PAqF_8YYvTueq4XbWI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjEzNzZmODQ5ODVmYzczMWYxMGM1ZWEiLCJlbWFpbCI6ImRlbmVtZTFAbWFpbC5jb20iLCJpYXQiOjE2NDU0NDI4ODIsImV4cCI6MTY0NTQ0NjQ4Mn0.AaLgtbIjtxQQCqKxrXx_laAl776CHz1DJ4oVqML-hWA
 
 ###
 GET {{BASE_URL}}/users/userInfo
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBmOTdkYzE2M2ZlYWE5MmMzMzIyNmYiLCJlbWFpbCI6InVndXJAbWFpbC5jb20iLCJpYXQiOjE2NDUxOTE3ODQsImV4cCI6MTY0NTE5NTM4NH0.AR0yFzyzskpHUVpX5B4N4DWNDCyZE50CFFxNpkMELV4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjEzNzZmODQ5ODVmYzczMWYxMGM1ZWEiLCJlbWFpbCI6ImRlbmVtZTFAbWFpbC5jb20iLCJpYXQiOjE2NDU0NDI4ODIsImV4cCI6MTY0NTQ0NjQ4Mn0.AaLgtbIjtxQQCqKxrXx_laAl776CHz1DJ4oVqML-hWA
 
 ###
 POST {{BASE_URL}}/users/register
 Content-Type: application/json
 
 {
-    "name" : "ipek",
-    "surname" : "ipek",
-    "email" : "ipek@mail.com",
-    "password" : "ipekPsw"
+    "name" : "deneme",
+    "surname" : "deneme",
+    "email" : "deneme@mail.com",
+    "password" : "denemePsw"
 }
 ###
 
@@ -31,8 +31,8 @@ POST {{BASE_URL}}/users/login
 Content-Type: application/json
 
 {
-    "email" : "ugur@mail.com",
-    "password" : "ugurPsw"
+    "email" : "deneme1@mail.com",
+    "password" : "deneme1Psw"
 }
 
 
@@ -48,13 +48,13 @@ Content-Type: application/json
 
 PATCH  {{BASE_URL}}/users/update
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBlMDU3MTBiZmIyOWNiZTM5M2Y4NzEiLCJlbWFpbCI6InVzZXI3QG1haWwuY29tIiwiaWF0IjoxNjQ1MTg3MDQ0LCJleHAiOjE2NDUxOTA2NDR9.QuwaAKTCKZ_SiDqaMgjDIaoKZwsP_B6E81VVw_JTGnc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjEzNzZmODQ5ODVmYzczMWYxMGM1ZWEiLCJlbWFpbCI6ImRlbmVtZUBtYWlsLmNvbSIsImlhdCI6MTY0NTQ0MjgyNSwiZXhwIjoxNjQ1NDQ2NDI1fQ.4KTdPtUAoS-vN1Cq2JJN2qwIA4R8sYku0PzaormZrVE
 
 {
-    "name" : "userYedi",
-    "surname" : "userYedi",
-    "email" : "userYedi@mail.com",
-    "password" : "userYediPsw"
+    "name" : "deneme1",
+    "surname" : "deneme1",
+    "email" : "deneme1@mail.com",
+    "password" : "deneme1Psw"
 }
 
 ###
