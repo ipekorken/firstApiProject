@@ -37,6 +37,10 @@ const UserSchema = new Schema(
       trim: true,
       minlength: 6,
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
   { collection: 'Users', timestamps: true }
 );
@@ -65,7 +69,7 @@ UserSchema.methods.joiValidation = function (userObject) {
 
 UserSchema.methods.toJSON = function () {
   const user = this.toObject();
-  delete user._id;
+  //delete user._id;
   delete user.createdAt;
   delete user.updatedAt;
   delete user.__v;

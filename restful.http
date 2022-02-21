@@ -7,19 +7,23 @@ GET  http://localhost:3000
 ###
 
 GET {{BASE_URL}}/users
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBmOTdkYzE2M2ZlYWE5MmMzMzIyNmYiLCJlbWFpbCI6InVndXIyQG1haWwuY29tIiwiaWF0IjoxNjQ1NDI0MzA1LCJleHAiOjE2NDU0Mjc5MDV9.k_-f6fL3jYqjvDXW-GPw8f-t7PAqF_8YYvTueq4XbWI
 
 ###
-GET {{BASE_URL}}/users/me
+GET {{BASE_URL}}/users/userInfo
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBmOTdkYzE2M2ZlYWE5MmMzMzIyNmYiLCJlbWFpbCI6InVndXJAbWFpbC5jb20iLCJpYXQiOjE2NDUxOTE3ODQsImV4cCI6MTY0NTE5NTM4NH0.AR0yFzyzskpHUVpX5B4N4DWNDCyZE50CFFxNpkMELV4
 
 ###
 POST {{BASE_URL}}/users/register
 Content-Type: application/json
 
 {
-    "name" : "ugur",
-    "surname" : "orken",
-    "email" : "ugur@mail.com",
-    "password" : "ugurPsw"
+    "name" : "ipek",
+    "surname" : "ipek",
+    "email" : "ipek@mail.com",
+    "password" : "ipekPsw"
 }
 ###
 
@@ -42,16 +46,24 @@ Content-Type: application/json
 }
 ###
 
-PATCH  {{BASE_URL}}/users/me
+PATCH  {{BASE_URL}}/users/update
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBlMWZmMjBmMjZlMmZmZTAyZDAxMTQiLCJlbWFpbCI6InVndXJAbWFpbC5jb20iLCJpc0FkbWluIjp0cnVlLCJpc0FjdGl2ZSI6dHJ1ZSwiaWF0IjoxNjQ1MTcyMzI4LCJleHAiOjE2NDUxNzU5Mjh9.aJgqLGpC286BtwvVkgIXvC3SUPh16jEREUUF4IFCw7Y
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBlMDU3MTBiZmIyOWNiZTM5M2Y4NzEiLCJlbWFpbCI6InVzZXI3QG1haWwuY29tIiwiaWF0IjoxNjQ1MTg3MDQ0LCJleHAiOjE2NDUxOTA2NDR9.QuwaAKTCKZ_SiDqaMgjDIaoKZwsP_B6E81VVw_JTGnc
 
 {
-    "email" : "ipekNew@mail.com",
-    "password" : "ipekNewPsw"
+    "name" : "userYedi",
+    "surname" : "userYedi",
+    "email" : "userYedi@mail.com",
+    "password" : "userYediPsw"
 }
 
 ###
 DELETE {{BASE_URL}}/users/620b4e76f8ff4a021b72d3fa
 Content-Type: application/json
+
+###
+
+GET {{BASE_URL}}/users/deleteAll
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjBmOTdkYzE2M2ZlYWE5MmMzMzIyNmYiLCJlbWFpbCI6InVndXIyQG1haWwuY29tIiwiaWF0IjoxNjQ1NDI0ODI0LCJleHAiOjE2NDU0Mjg0MjR9.W_2jVjpEszHSe5yOLYTKT5eiTTVpVDwICKz66JXNq_U
 
