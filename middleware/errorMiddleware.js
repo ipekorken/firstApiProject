@@ -6,9 +6,9 @@ const catchError = (err, req, res, next) => {
       // message: JSON.stringify(err.keyValue) + " unique olmalıdır.",
       message:
         Object.keys(err.keyValue) /*email*/ +
-        " için girdiğiniz değer unique olmalıdır. " +
+        ' için girdiğiniz değer unique olmalıdır. ' +
         Object.values(err.keyValue) /*girilen email*/ +
-        " başka bir kullanıcı tarafından kullanılmaktadır.",
+        ' başka bir kullanıcı tarafından kullanılmaktadır.',
       errorCode: 400,
     });
   }
@@ -20,7 +20,7 @@ const catchError = (err, req, res, next) => {
   // if (err.code === 66) =>> 66 _id değiştirmeye çalışırken çıkar. Değiştirilemez bir alanı güncellemeye çalışırsak alırız.
   if (err.code === 66) {
     return res.json({
-      message: "Değiştirilemez bir alanı güncellemeye çalıştın.",
+      message: 'Değiştirilemez bir alanı güncellemeye çalıştın.',
       errorCode: 400,
     });
   }

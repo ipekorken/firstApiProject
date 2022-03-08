@@ -20,10 +20,19 @@ POST {{BASE_URL}}/users/register
 Content-Type: application/json
 
 {
+    "name" : "user3",
+    "surname" : "user3",
+    "email" : "user3@mail.com",
+    "password" : "user3Psw"
+}
+###
+POST {{BASE_URL}}/groups/addGroup
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIwYjJlMTI0MmFhMTVlMmUxZjM4MjMiLCJlbWFpbCI6ImFzZEBtYWlsLmNvbSIsImlhdCI6MTY0NjcyMTY5MSwiZXhwIjoxNjQ2NzI1MjkxfQ.pgOm2Vedx4SqlGZSz-V385f-FqYZq3t50XHis_K33FU
+
+{
     "name" : "deneme",
-    "surname" : "deneme",
-    "email" : "deneme@mail.com",
-    "password" : "denemePsw"
+    "members" : [11111111,222222]
 }
 ###
 
@@ -31,8 +40,8 @@ POST {{BASE_URL}}/users/login
 Content-Type: application/json
 
 {
-    "email" : "deneme1@mail.com",
-    "password" : "deneme1Psw"
+    "email" : "asd@mail.com",
+    "password" : "asdPsw"
 }
 
 

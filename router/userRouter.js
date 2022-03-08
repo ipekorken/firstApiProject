@@ -4,8 +4,8 @@ const adminMiddleware = require('../middleware/adminMiddleware');
 const userController = require('../controllers/userController');
 
 // sadece '/' koyduğumuzda burası 'api/users' anlamına gelir.
-router.get('/', [authMiddleware, adminMiddleware], userController.listAllUsers);
-
+//router.get('/', [authMiddleware, adminMiddleware], userController.listAllUsers);
+router.get('/', authMiddleware, userController.listAllUsers);
 router.get('/userInfo', authMiddleware, userController.getUserInfo);
 
 router.patch('/update', authMiddleware, userController.updateUser);
