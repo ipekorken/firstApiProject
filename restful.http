@@ -6,9 +6,9 @@ GET  http://localhost:3000
 
 ###
 
-GET {{BASE_URL}}/users
+GET {{BASE_URL}}/groups
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjEzNzZmODQ5ODVmYzczMWYxMGM1ZWEiLCJlbWFpbCI6ImRlbmVtZTFAbWFpbC5jb20iLCJpYXQiOjE2NDU0NDI4ODIsImV4cCI6MTY0NTQ0NjQ4Mn0.AaLgtbIjtxQQCqKxrXx_laAl776CHz1DJ4oVqML-hWA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIxZmNmOGRhYjlkMGMyNGFiYmYwOTciLCJlbWFpbCI6ImlwZWtAbWFpbC5jb20iLCJpYXQiOjE2NDY3MzQxOTksImV4cCI6MTY0NjczNzc5OX0.aOhlnjkaO8pUsf1AJiqxjYHQyQ83LjZG5bI0ZJ4yhLw
 
 ###
 GET {{BASE_URL}}/users/userInfo
@@ -20,10 +20,10 @@ POST {{BASE_URL}}/users/register
 Content-Type: application/json
 
 {
-    "name" : "user3",
-    "surname" : "user3",
-    "email" : "user3@mail.com",
-    "password" : "user3Psw"
+    "name" : "user12",
+    "surname" : "user12",
+    "email" : "user12@mail.com",
+    "password" : "user12Psw"
 }
 ###
 POST {{BASE_URL}}/groups/addGroup
@@ -31,8 +31,8 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjIwYjJlMTI0MmFhMTVlMmUxZjM4MjMiLCJlbWFpbCI6ImFzZEBtYWlsLmNvbSIsImlhdCI6MTY0NjcyMTY5MSwiZXhwIjoxNjQ2NzI1MjkxfQ.pgOm2Vedx4SqlGZSz-V385f-FqYZq3t50XHis_K33FU
 
 {
-    "name" : "deneme",
-    "members" : [11111111,222222]
+    "name" : "group chat deneme",
+    "members" : ["6227056f542404afd3fea6ca","62270587542404afd3fea6cc"]
 }
 ###
 
@@ -40,8 +40,8 @@ POST {{BASE_URL}}/users/login
 Content-Type: application/json
 
 {
-    "email" : "asd@mail.com",
-    "password" : "asdPsw"
+    "email" : "ipek@mail.com",
+    "password" : "ipekPsw"
 }
 
 

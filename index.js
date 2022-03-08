@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 //routes
 const userRouter = require('./router/userRouter');
 const groupRouter = require('./router/groupRouter');
+const messageRouter = require('./router/messageRouter');
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/users', userRouter);
 app.use('/api/groups', groupRouter);
+app.use('/api/messages', messageRouter);
 //bütün isteklerin başına api koyduk.
 //böyle başlayan 'api/users' her şey de userRouter'ı kullan.
 

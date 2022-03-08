@@ -48,7 +48,7 @@ const addGroup = async (req, res, next) => {
 
 const deleteGroupById = async (req, res, next) => {
   try {
-    const result = await User.findByIdAndDelete({
+    const result = await Message.findByIdAndDelete({
       _id: req.params.id,
     });
     if (result) {
