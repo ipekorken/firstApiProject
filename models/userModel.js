@@ -49,6 +49,7 @@ const schema = Joi.object({
   surname: Joi.string().min(2).max(50).trim(),
   email: Joi.string().trim().email(),
   password: Joi.string().trim().min(6),
+  isAdmin: Joi.boolean(),
 });
 
 //token için:

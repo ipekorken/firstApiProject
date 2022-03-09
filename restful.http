@@ -20,10 +20,10 @@ POST {{BASE_URL}}/users/register
 Content-Type: application/json
 
 {
-    "name" : "user12",
-    "surname" : "user12",
-    "email" : "user12@mail.com",
-    "password" : "user12Psw"
+    "name" : "Ecem",
+    "surname" : "Balta",
+    "email" : "balta@mail.com",
+    "password" : "baltaPsw"
 }
 ###
 POST {{BASE_URL}}/groups/addGroup
